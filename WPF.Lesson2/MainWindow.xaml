@@ -5,8 +5,176 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="600">
+    <!--<Button VerticalAlignment="Center" Click="ButtonBase_OnClick"
+            HorizontalAlignment="Center"
+            Content="Show Message"/>-->
+
+    <!--<StackPanel Orientation="Vertical" Margin="5">
+        <Button Content="Button 1"/>
+        <Button Content="Button 2" FontSize="26" VerticalAlignment="Center"
+                Margin="0 5"/>
+        <Button Content="Button 3" HorizontalAlignment="Left"
+                Margin="0 0 0 5"/>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="Name"/>
+                <TextBox MaxWidth="120"/>
+            </StackPanel>
+            <StackPanel Margin="5 0 0 0">
+                <TextBlock Text="Age"/>
+                <TextBox/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>-->
+
+    <!--<WrapPanel Margin="5">
+        <Button Content="Button 1" Margin="0 0 5 0"/>
+        <Button Content="Button 2" FontSize="26" VerticalAlignment="Center"
+                Margin="0 5"/>
+        <Button Content="Button 3" HorizontalAlignment="Left"
+                Margin="5 0 0 5"/>
+        <Button Content="Button 4"
+                Margin="5 0 0 5" VerticalAlignment="Bottom"/>
+        <Button Content="Button 5" 
+                Margin="5 0 0 5"/>
+    </WrapPanel>-->
+
+    <!--<WrapPanel Margin="5" Orientation="Vertical">
+        <Button Content="Button 1" Margin="0 0 5 0"/>
+        <Button Content="Button 2" FontSize="26" VerticalAlignment="Center"
+                Margin="0 5"/>
+        <Button Content="Button 3" HorizontalAlignment="Left"
+                Margin="5 0 0 5"/>
+        <Button Content="Button 4"
+                Margin="5 0 0 5" VerticalAlignment="Bottom"/>
+        <Button Content="Button 5" 
+                Margin="5 0 0 5"/>
+        <Button Content="Button 6" 
+                Margin="5 0 0 5"/>
+        <StackPanel>
+            <TextBlock Text="Name"/>
+            <TextBox MaxWidth="120"/>
+        </StackPanel>
+        <StackPanel Margin="5 0 0 0">
+            <TextBlock Text="Age"/>
+            <TextBox/>
+        </StackPanel>
+    </WrapPanel>-->
+
+    <!--<Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0"
+            Content="Button 1" Margin="0 0 5 0"/>
+        <Button Grid.Row="1" Content="Button 2"
+                Margin="0 5" FontSize="28"/>
+        <Button Grid.Row="2" Content="Button 3"
+                Margin="5 0 0 5" Background="ForestGreen"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="Name"/>
+                <TextBox MaxWidth="120"/>
+            </StackPanel>
+            <StackPanel Margin="5 0 0 0">
+                <TextBlock Text="Age"/>
+                <TextBox/>
+            </StackPanel>
+        </StackPanel>
+        <TextBox Grid.Row="4" FontSize="20" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <Grid Row="5" HorizontalAlignment="Right" Margin="0 5 5 5">
+            --><!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>--><!--
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="OK" Padding="15 1"/>
+            <Button Grid.Column="1" Margin="5 0 0 0" Content="Cancel" Padding="5 1"/>
+        </Grid>
+    </Grid>-->
+
+    <!--<Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Address:" FontWeight="Bold"/>
+        <TextBox Grid.Column="1" Margin="5 0 0 0"/>
+
+        <Button Grid.Column="0" 
+                Grid.Row="1" 
+                Margin="0 5" 
+                Content="Send" 
+                Padding="15 1"
+                Grid.ColumnSpan="2"/>
+    </Grid>-->
+
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Button" Margin="5"/>
+        <Button Grid.Row="1" Content="Button" Margin="5"/>
+        <Button Grid.Row="2" Content="Button" Margin="5"/>
+    </Grid>-->
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Button" Margin="5"/>
+        <Button Grid.Row="1" Content="Button" Margin="5"/>
+        <Button Grid.Row="2" Content="Button" Margin="5"/>
+    </Grid>-->
+
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Button" Margin="5"/>
+        <Button Grid.Row="2" Content="Button" Margin="5"/>
+
+        <GridSplitter Grid.Row="1" Height="2"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Center"/>
+    </Grid>-->
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Content="Button" Margin="5"/>
+        <Button Grid.Column="2" Content="Button" Margin="5"/>
+
+        <GridSplitter Grid.Column="1" Width="2" Background="ForestGreen"
+                      VerticalContentAlignment="Stretch"
+                      HorizontalAlignment="Center"/>
     </Grid>
 </Window>

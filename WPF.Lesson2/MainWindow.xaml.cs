@@ -24,5 +24,11 @@ namespace WPF.Lesson2
         {
             InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            //Close();
+            //MessageBox.Show("Hello World!");
+        }
     }
 }
