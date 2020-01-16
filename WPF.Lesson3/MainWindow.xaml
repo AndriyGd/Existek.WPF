@@ -5,8 +5,118 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="600">
+    <!--<DockPanel>
+        <GroupBox Header="Languages" DockPanel.Dock="Left" Margin="0">
+            <StackPanel Margin="5">
+                <Button Content="C#"/>
+                <Button Content="Java" Margin="0 5"/>
+                <Button Content="JavaScript" Margin="0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox DockPanel.Dock="Right" Header="Settings">
+            <StackPanel Margin="0 5 0 0">
+                <Button Content="Style"/>
+                <Button Content="Shape" Margin="0 5 0 0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox DockPanel.Dock="Right" Header="View">
+            <StackPanel Margin="0 5 0 0">
+                <Button Content="Style"/>
+                <Button Content="Shape" Margin="0 5 0 0"/>
+            </StackPanel>
+        </GroupBox>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top">
+            <MenuItem Header="File"/>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"/>
+                <MenuItem Header="Cut"/>
+                <MenuItem Header="Past"/>
+            </MenuItem>
+            <MenuItem Header="Tools"/>
+        </Menu>
+        <GroupBox DockPanel.Dock="Bottom" Header="Preview">
+            <Image Source="Images/Space-background-HD-wallpaper.jpg" Height="50" Stretch="Fill"/>
+        </GroupBox>
+        <TextBox AcceptsReturn="True" TextWrapping="Wrap" FontSize="20" Margin="0"
+                 Background="Cyan"/>
+    </DockPanel>-->
+    <!--<StackPanel>
+        <TextBlock Text="Hello TextBox"/>
+        <Label>
+            <Button Content="Button in Label"/>
+        </Label>
+        <PasswordBox Name="UserPassword" PasswordChar="#"/>
+        <Button Click="ButtonBase_OnClick" Content="Show"/>
+        <TextBox IsReadOnly="True" Text="Hello"/>
+    </StackPanel>-->
+    <!--<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="OS">
+            <StackPanel Margin="0 5 0 0">
+                <RadioButton Content="Windows" IsChecked="True" />
+                <RadioButton Content="Linux"/>
+                <RadioButton Content="Mac"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Color">
+            <StackPanel Margin="0 5 0 0">
+                <RadioButton Name="RbRed" Content="Red" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+                <RadioButton Name="RbBlue" Content="Blue" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+                <RadioButton Name="RbGreen" Content="Green" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="2" Header="Additional Color">
+            <StackPanel Margin="0 5 0 0">
+                <RadioButton Name="RbRed2" Content="Yellow" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+                <RadioButton Name="RbBlue2" Content="Black" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+                <RadioButton Name="RbGreen2" Content="Gold" Checked="Rb_OnChecked"
+                             GroupName="BackColor"/>
+            </StackPanel>
+        </GroupBox>
+        <Grid Grid.Column="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <RadioButton Grid.Column="0" Content="Red" Checked="Rb_OnChecked"/>
+            <RadioButton Grid.Column="1" Content="Blue" Checked="Rb_OnChecked"/>
+            <RadioButton Grid.Column="2" Content="Green" Checked="Rb_OnChecked"/>
+        </Grid>
+    </Grid>-->
+    <!--<StackPanel Margin="5">
+        <CheckBox Content="Build to Production" IsChecked="{x:Null}"/>
+        <CheckBox Content="Develop" IsChecked="True"/>
+        <CheckBox>
+            <Image Source="Images/Space-background-HD-wallpaper.jpg" Height="20" Stretch="Fill"/>
+        </CheckBox>
+    </StackPanel>-->
+    <Grid VerticalAlignment="Center" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--<ProgressBar Grid.Row="0" Value="50" Height="20" Maximum="100"
+                     IsIndeterminate="True"/>-->
+        <ProgressBar Name="PrbProgressBar" Grid.Row="0" Value="0" Height="20" Maximum="100"
+                     Foreground="Aquamarine"/>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center"
+                   Text="{Binding ElementName=PrbProgressBar, Path=Value, StringFormat={}{0} % Loaded}"
+                   VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <Button Grid.Row="1" Content="Load Data" Margin="0 5 0 0" Click="ButtonBase_OnClick"/>
     </Grid>
 </Window>

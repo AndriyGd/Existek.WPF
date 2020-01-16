@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 
 namespace WPF.Lesson3
 {
+    using System.Threading;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -23,6 +25,46 @@ namespace WPF.Lesson3
         public MainWindow()
         {
             InitializeComponent();
+            //UserPassword.Password = "2234:ldf-545";
+        }
+
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(UserPassword.Password);
+
+            for (int i = 0; i < 100; i++)
+            {
+                await Task.Run(() => { Thread.Sleep(250); });
+                PrbProgressBar.Value++;
+            }
+        }
+
+        private void Rb_OnChecked(object sender, RoutedEventArgs e)
+        {
+            //if (RbRed.IsChecked.Value)
+            //{
+            //    Background = Brushes.Red;
+            //}
+            //else if (RbBlue.IsChecked.Value)
+            //{
+            //    Background = Brushes.Blue;
+            //}
+            //else if (RbGreen.IsChecked.Value)
+            //{
+            //    Background = Brushes.Green;
+            //}
+            //else if (RbGreen2.IsChecked.Value)
+            //{
+            //    Background = Brushes.Gold;
+            //}
+            //else if (RbBlue2.IsChecked.Value)
+            //{
+            //    Background = Brushes.Black;
+            //}
+            //else if (RbRed2.IsChecked.Value)
+            //{
+            //    Background = Brushes.Yellow;
+            //}
         }
     }
 }
