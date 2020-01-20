@@ -5,8 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="600">
+
+    <!--<Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="OnNewCanExecute" Executed="OnNewExecuted"/>
+    </Window.CommandBindings>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" IsMainMenu="True" VerticalAlignment="Top" Background="Transparent">
+            <MenuItem Header="File" Background="Transparent">
+                <MenuItem Header="New" Command="New">
+                    <MenuItem.Icon>
+                        <Image Source="Images/view_new.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save" Command="Save">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Save.png"/>
+                    </MenuItem.Icon>
+                    <MenuItem.CommandBindings>
+                        <CommandBinding Command="Save" CanExecute="OnSaveCanExecute" Executed="OnSaveExecuted"/>
+                    </MenuItem.CommandBindings>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <TextBox Name="TxtBoxText" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="New" Command="New" Margin="5"/>
+            <Button Content="Cut" Command="Cut" Margin="5" CommandTarget="{Binding ElementName=TxtBoxText}"/>
+            <Button Content="Copy" Command="Copy" Margin="5" CommandTarget="{Binding ElementName=TxtBoxText}"/>
+            <Button Content="Paste" Command="Paste" Margin="5" CommandTarget="{Binding ElementName=TxtBoxText}"/>
+        </StackPanel>
+    </Grid>-->
+    <!--<ScrollViewer HorizontalScrollBarVisibility="Visible">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Height="500" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <DataGrid Grid.Row="1" Height="450"/>
+        </Grid>
+    </ScrollViewer>-->
+    <!--<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Customers"/>
+        <ComboBox SelectedIndex="0">
+            <ComboBoxItem Content="Dima"/>
+            <ComboBoxItem Content="Oleg"/>
+            <ComboBoxItem Content="Jonathan Top"/>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="16" Height="16" Fill="ForestGreen"/>
+                    <TextBlock Text="Jason" Margin="5 0 0 0"/>
+                </StackPanel>
+            </ComboBoxItem>
+        </ComboBox>
+    </StackPanel>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Customers"/>
+            <!--<ComboBox Name="CmbCustomers" DisplayMemberPath="CompanyName"/>-->
+            <ComboBox Name="CmbCustomers" Grid.IsSharedSizeScope="True">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <!--<StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding CompanyName}"/>
+                            <TextBlock Text="{Binding MaxItems}"
+                                       Margin="5 0 0 0"/>
+                        </StackPanel>-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="ComNameGroup"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Text="{Binding CompanyName}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding MaxItems}"
+                                       Margin="5 0 0 0"/>
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <Button Grid.Row="1" Content="Show" Margin="5" Click="ButtonBase_OnClick"/>
     </Grid>
 </Window>
