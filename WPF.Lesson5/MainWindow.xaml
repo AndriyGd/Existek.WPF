@@ -5,8 +5,348 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="600">
+    <!--<DockPanel Margin="5">-->
+        <!--<ListBox Name="LstBox" DockPanel.Dock="Left" SelectedIndex="0">
+            <ListBoxItem Content="Send email to multiple recipients"/>
+            <ListBoxItem Content="Email template engine"/>
+            <ListBoxItem Content="Send email with attachment"/>
+            <ListBoxItem Content="Sending email with embedded image"/>
+        </ListBox>-->
+        <!--<ListBox Name="LstBox" DockPanel.Dock="Left" />-->
+        <!--<ListBox Name="LstBox" DockPanel.Dock="Left" Grid.IsSharedSizeScope="True">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="ComNameGroup"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding CompanyName}"/>
+                        <ProgressBar Grid.Column="1" Margin="5 0 0 0"
+                                     Value="{Binding Percent}" Width="70"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center"
+                                   Text="{Binding Percent, StringFormat={}{0} %}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox Margin="5 0 0 0" DockPanel.Dock="Right" AcceptsReturn="True"
+                 Text="{Binding ElementName=LstBox, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+        <!--<ListView Name="LstView" DockPanel.Dock="Top">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Company Name" DisplayMemberBinding="{Binding CompanyName}"/>
+                        <GridViewColumn Header="Contact Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Max Items" DisplayMemberBinding="{Binding MaxItems}"/>
+                        <GridViewColumn Header="Percent">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <ProgressBar Value="{Binding Percent}" Width="70"/>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   Text="{Binding Percent, StringFormat={}{0} %}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Margin="5 15 0 0" DockPanel.Dock="Bottom" AcceptsReturn="True"
+                 Text="{Binding ElementName=LstView, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+        <!--<Grid DockPanel.Dock="Left" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Expander Name="ExpanderCustomer" Grid.Row="0" Header="Customers">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                </Grid>
+            </Expander>
+            <Expander Grid.Row="1" Header="Users">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                </Grid>
+            </Expander>
+            <Expander Grid.Row="2" Header="Suppliers">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                </Grid>
+            </Expander>
+            <Expander Grid.Row="3" Header="Blogs">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                </Grid>
+            </Expander>
+        </Grid>
+        <Expander Name="ExpanderStyles" DockPanel.Dock="Right" ExpandDirection="Right"
+                  ToolTip="Styles">
+            <Expander.Style>
+                <Style TargetType="Expander">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=ExpanderCustomer, Path=IsExpanded}"
+                                     Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Expander.Style>
+            <ListBox>
+                <ListBoxItem Content="Color"/>
+                <ListBoxItem Content="Brush"/>
+                <ListBoxItem Content="Rectangle"/>
+            </ListBox>
+        </Expander>
+        <TextBox DockPanel.Dock="Bottom"/>-->
+    <!--</DockPanel>-->
+    <!--<TabControl TabStripPlacement="Top">
+        <TabItem Header="General">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name"/>
+                            <GridViewColumn Header="Age"/>
+                            <GridViewColumn Header="Phone"/>
+                            <GridViewColumn Header="Address"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Button Grid.Row="1" HorizontalAlignment="Right" 
+                        Content="OK" Width="65" Margin="5"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Tools">
+            <DockPanel>
+                <Grid DockPanel.Dock="Left" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Expander Name="ExpanderCustomer" Grid.Row="0" Header="Customers">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                        </Grid>
+                    </Expander>
+                    <Expander Grid.Row="1" Header="Users">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                        </Grid>
+                    </Expander>
+                    <Expander Grid.Row="2" Header="Suppliers">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                        </Grid>
+                    </Expander>
+                    <Expander Grid.Row="3" Header="Blogs">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" MinWidth="120"/>
+                        </Grid>
+                    </Expander>
+                </Grid>
+                <Expander Name="ExpanderStyles" DockPanel.Dock="Right" ExpandDirection="Right"
+                          ToolTip="Styles">
+                    <Expander.Style>
+                        <Style TargetType="Expander">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=ExpanderCustomer, Path=IsExpanded}"
+                                             Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Expander.Style>
+                    <ListBox>
+                        <ListBoxItem Content="Color"/>
+                        <ListBoxItem Content="Brush"/>
+                        <ListBoxItem Content="Rectangle"/>
+                    </ListBox>
+                </Expander>
+                <TextBox DockPanel.Dock="Bottom"/>
+            </DockPanel>
+        </TabItem>
+    </TabControl>-->
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <ToolBarTray>
+            <ToolBar>
+                <Button ToolTip="Save">
+                    <Image Source="Images/Save.png" Width="15"/>
+                </Button>
+                <Button ToolTip="New">
+                    <Image Source="Images/view_new.png" Width="15"/>
+                </Button>
+                <Button ToolTip="Edit">
+                    <Image Source="Images/view_edit.png" Width="15"/>
+                </Button>
+                <Separator/>
+                <Button ToolTip="Refresh" Click="ButtonRefresh_OnClick">
+                    <Image Source="Images/arrow_refresh.png" Width="15"/>
+                </Button>
+            </ToolBar>
+            <ToolBar>
+                <Button>
+                    <Image Source="Images/undelete.png" Width="15"/>
+                </Button>
+                <Button ToolTip="Remove" IsEnabled="False"
+                        ToolTipService.ShowOnDisabled="True">
+                    <Image Source="Images/cross.png" Width="15"/>
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+        <ListView Grid.Row="1" Name="LstView" DockPanel.Dock="Top">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Company Name" DisplayMemberBinding="{Binding CompanyName}"/>
+                        <GridViewColumn Header="Contact Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Max Items" DisplayMemberBinding="{Binding MaxItems}"/>
+                        <GridViewColumn Header="Percent">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <ProgressBar Value="{Binding Percent}" Width="70"/>
+                                        <TextBlock HorizontalAlignment="Center"
+                                                   Text="{Binding Percent, StringFormat={}{0} %}"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

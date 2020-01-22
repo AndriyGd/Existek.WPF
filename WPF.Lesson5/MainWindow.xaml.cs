@@ -23,6 +23,30 @@ namespace WPF.Lesson5
         public MainWindow()
         {
             InitializeComponent();
+            //LoadData();
+        }
+
+        private void LoadData()
+        {
+            var customers = new List<Customer>
+            {
+                new Customer{CompanyName = "LabCom", MaxItems = 234, Name = "Victor", Percent = 25},
+                new Customer{CompanyName = "LingOut", MaxItems = 134, Name = "Oleg", Percent = 64},
+                new Customer{CompanyName = "FloRT", MaxItems = 734, Name = "Jason", Percent = 14},
+                new Customer{CompanyName = "SouthPS", MaxItems = 434, Name = "Olga", Percent = 27},
+                new Customer{CompanyName = "BigData", MaxItems = 1234, Name = "John Tom", Percent = 78},
+            };
+
+            //LstBox.ItemsSource = customers;
+            //LstBox.DisplayMemberPath = "CompanyName";
+            //LstBox.SelectedIndex = 0;
+
+            LstView.ItemsSource = customers;
+        }
+
+        private void ButtonRefresh_OnClick(object sender, RoutedEventArgs e)
+        {
+            LoadData();
         }
     }
 }
