@@ -4,9 +4,83 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson6"
+        xmlns:model="clr-namespace:WPF.Lesson6.Model"
+        xmlns:io="clr-namespace:System.IO;assembly=System"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <!--<Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Folders">
+            <TreeView Name="TreeViewFolders">
+                <TreeView.Resources>
+                    <HierarchicalDataTemplate 
+                        DataType="{x:Type model:Company}"
+                        ItemsSource="{Binding Employees}">
+                        <TextBlock Text="{Binding CompanyName}"/>
+                    </HierarchicalDataTemplate>
+                    <DataTemplate DataType="{x:Type model:Employee}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </TreeView.Resources>
+            </TreeView>
+        </GroupBox>
+        <Button Grid.Column="1" VerticalAlignment="Bottom"
+                HorizontalAlignment="Right" Margin="5" Content="Load Companies"
+                Click="ButtonBase_OnClick"/>
+    </Grid>-->
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="DataGridCompanies" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" CanUserDeleteRows="False"
+                  GridLinesVisibility="Vertical"
+                  AlternatingRowBackground="Aquamarine">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" 
+                                    FontWeight="Bold"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridCheckBoxColumn Header="On Vacation" 
+                                        Binding="{Binding IsOnVacation}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="Transparent" BorderThickness="0">
+                                <Image Source="Images/cross.png" Width="15"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontFamily" Value="Cambria"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="FontFamily" Value="Cambria"/>
+                    <Setter Property="FontSize" Value="14"/>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="5" Content="Load Companies"
+                    Click="ButtonBase_OnClick"/>
+            <Button Name="Show" Click="Show_OnClick" Content="Show" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>
