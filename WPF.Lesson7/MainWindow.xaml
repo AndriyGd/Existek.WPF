@@ -3,10 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF.Lesson7"
+        xmlns:local="clr-namespace:WPF.Lesson7.Model"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="350" Width="600">
+    <Window.Resources>
+        <local:User x:Key="DefUser"
+                    Age="34" 
+                    Name="Jason"
+                    Password="GH;TT-90"/>
+    </Window.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="User Name:"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0"
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" MinWidth="60"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Age:"
+                       Margin="0 5 0 0"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5 5 0 0"
+                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Password:"
+                       Margin="0 5 0 0"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5 5 0 0"
+                     Text="{Binding Password}" IsReadOnly="True"
+                     ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text}"/>
+
+            <TextBox Grid.Row="3" Grid.Column="0"
+                     Margin="0 5 0 0" IsReadOnly="True"
+                       Grid.ColumnSpan="2"
+                     Text="{Binding Name}"/>
+
+            <TextBox Grid.Row="4" Grid.Column="0"
+                     Margin="0 5 0 0" IsReadOnly="True"
+                     Grid.ColumnSpan="2"
+                     Text="{Binding Age, Mode=OneTime}"/>
+
+            <TextBox Grid.Row="5" Grid.Column="0"
+                     Margin="0 5 0 0"
+                     Grid.ColumnSpan="2"
+                     Text="{Binding Name, Mode=OneWay}"/>
+
+            <TextBox Grid.Row="6" Grid.Column="0"
+                     Margin="0 5 0 0"
+                     Grid.ColumnSpan="2"
+                     Text="{Binding Source={StaticResource DefUser}, Path=Password}"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Name="UpdatedFromUI" Content="Updated From UI"
+                    Click="UpdatedFromUI_OnClick"/>
+
+            <Button Name="UpdatedProgramatically" Margin="5 0 0 0"
+                    Content="Updated Programatically"
+                    Click="UpdatedProgramatically_OnClick"/>
+        </StackPanel>
     </Grid>
 </Window>

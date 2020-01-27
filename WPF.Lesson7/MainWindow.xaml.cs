@@ -15,14 +15,33 @@ using System.Windows.Shapes;
 
 namespace WPF.Lesson7
 {
+    using Model;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly User _user;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            _user = new User{Name = "Jonathan Tom", Age = 25, Password = "hjh;67-gf"};
+
+            DataContext = _user;
+        }
+
+        private void UpdatedFromUI_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"User: {_user.Name}\nAge: {_user.Age}");
+        }
+
+        private void UpdatedProgramatically_OnClick(object sender, RoutedEventArgs e)
+        {
+            _user.Age = 123;
+            _user.Password = "gfff;op-80";
         }
     }
 }
