@@ -5,8 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson8"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="200" Width="400">
+    <Window.Resources>
+        <Style x:Key="TxtBlockMargin" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0 5 5 0"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0 5 0 0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+        <Style x:Key="BDes" TargetType="TextBlock">
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+            <Setter Property="ToolTip"
+                    Value="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}, Path=Item.Description}"/>
+        </Style>
+    </Window.Resources>
+    <!--<Grid Margin="5 0 5 5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Book Details">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" 
+                           Style="{StaticResource TxtBlockMargin}"/>
+                <TextBox Grid.Row="0" Grid.Column="1"
+                         Text="{Binding Name}"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Author:" 
+                           Style="{StaticResource TxtBlockMargin}"/>
+                <TextBox Grid.Row="1" Grid.Column="1"
+                         Text="{Binding Author}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Pages:" 
+                           Style="{StaticResource TxtBlockMargin}"/>
+                <TextBox Grid.Row="2" Grid.Column="1"
+                         Text="{Binding Pages}"/>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Previous Book" Name="BtnPrevBook" Click="BtnPrevBook_OnClick"/>
+            <Button Content="Next Book" Name="BtnNextBook" Margin="5 0 0 0" Click="BtnNextBook_OnClick"/>
+        </StackPanel>
+    </Grid>-->
+
+    <DataGrid AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False"
+              AlternatingRowBackground="AliceBlue"
+              GridLinesVisibility="Vertical"
+              ItemsSource="{Binding Books}"
+              SelectedItem="{Binding SelectedBook, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+            <DataGridTextColumn Header="Author" Binding="{Binding Author}"/>
+            <DataGridTextColumn Header="Pages" Binding="{Binding Pages}"/>
+            <DataGridTextColumn Header="Description" Binding="{Binding Description}"
+                                Width="180"
+                                ElementStyle="{StaticResource BDes}"/>
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Background="Transparent" ToolTip="Remove Book"
+                                BorderThickness="0" Click="ButtonBase_OnClick">
+                            <Image Source="Resources/cross.png"/>
+                        </Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
 </Window>
