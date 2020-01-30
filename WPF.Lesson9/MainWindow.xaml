@@ -3,10 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WPF.Lesson9"
+        xmlns:common="clr-namespace:WPF.Lesson9.Common"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="250" Width="400">
+    <Window.Resources>
+        <common:ShowMessageCommand x:Key="ShowMessageCommand"/>
+    </Window.Resources>
+    <!--<Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Name="TxtText"/>
+            <Button Content="Show Message" Margin="0 5 0 0"
+                    Command="{StaticResource ShowMessageCommand}"
+                    CommandParameter="{Binding ElementName=TxtText, Path=Text}"/>
+        </StackPanel>
+    </Grid>-->
+    <!--<Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Name="TxtText" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Show Message" Margin="0 5 0 0"
+                    Command="{StaticResource ShowMessageCommand}"
+                    CommandParameter="{Binding MessageText}"/>
+        </StackPanel>
+    </Grid>-->
+
+    <!--<Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Name="TxtText" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Show Message" Margin="0 5 0 0"
+                    Command="{Binding ShowMessageTextCommand}"/>
+        </StackPanel>
+    </Grid>-->
+
     <Grid>
-        
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBox Name="TxtText" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Show Message" Margin="0 5 0 0"
+                    Command="{Binding ShowMessageTextCommand}"
+                    CommandParameter="{Binding MessageText}"/>
+        </StackPanel>
     </Grid>
 </Window>
