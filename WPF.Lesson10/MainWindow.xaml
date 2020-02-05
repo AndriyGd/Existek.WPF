@@ -4,9 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson10"
+        xmlns:converters="clr-namespace:WPF.Lesson10.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <Window.Resources>
+        <converters:BooleanToVisibleConverter x:Key="BooleanToVisibleConverter"/>
+        <converters:CityStreetToFullAddressConverter x:Key="FullAddressConverter"/>
+        <converters:SalaryToColorConverter x:Key="SalaryToColorConverter"/>
+        <Style TargetType="TextBox">
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Margin" Value=" 5 0 0 0"/>
+        </Style>
+    </Window.Resources>
+    <!--<GroupBox Grid.IsSharedSizeScope="True">
+       <Grid>
+           <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+           <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="City:"/>
+                <TextBox Name="City"/>
+            </StackPanel>
+           <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="Street:"/>
+                <TextBox Name="Street"/>
+            </StackPanel>
+           <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="Full address:"/>
+                <TextBox>
+                    <TextBox.Text>
+                        <MultiBinding Converter="{StaticResource FullAddressConverter}">
+                            <Binding ElementName="City" Path="Text"/>
+                            <Binding ElementName="Street" Path="Text"/>
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+           </StackPanel>
+
+           <CheckBox Name="CheckBoxZipCode" Grid.Row="3" Content="Has zip code"
+                     Margin="0 5 0 0"/>
+           <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal"
+                       Visibility="{Binding ElementName=CheckBoxZipCode, Path=IsChecked, Converter={StaticResource BooleanToVisibleConverter}}">
+               <TextBlock Text="Zip Code:"/>
+               <TextBox/>
+           </StackPanel>
+        </Grid>
+    </GroupBox>-->
+
+    <DataGrid CanUserDeleteRows="False" AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              GridLinesVisibility="Vertical"
+              ItemsSource="{Binding Employees}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+            <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+            <DataGridTextColumn Header="Salary" Binding="{Binding Salary}"/>
+        </DataGrid.Columns>
+        <DataGrid.RowStyle>
+            <Style TargetType="DataGridRow">
+                <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Self}, Path=Item.Salary, Converter={StaticResource SalaryToColorConverter}}"/>
+            </Style>
+        </DataGrid.RowStyle>
+    </DataGrid>
 </Window>
