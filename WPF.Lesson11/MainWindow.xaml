@@ -5,8 +5,107 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson11"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="500"
+        Background="{DynamicResource MainBackgroundStyle}">
+    <!--<Window.Resources>
+        <Style x:Key="BtnBlack" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Cambria"/>
+            <Setter Property="Margin" Value="0 5 0 0"/>
+        </Style>
+        <Style x:Key="BtnGreatStyle" TargetType="Button"
+               BasedOn="{StaticResource BtnBlack}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0 0" EndPoint="0 1"
+                                         SpreadMethod="Reflect">
+                        <GradientStop Offset="0.0" Color="Red"/>
+                        <GradientStop Offset="0.5" Color="DarkGreen"/>
+                        <GradientStop Offset="0.85" Color="Black"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="TxtBoxBase" TargetType="TextBox">
+            <Setter Property="Margin" Value="0 5 0 0"/>
+            <Setter Property="FontFamily" Value="Cambria"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="TxtBoxTitleStyle" 
+               TargetType="TextBox" 
+               BasedOn="{StaticResource TxtBoxBase}">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style TargetType="TextBox" 
+               BasedOn="{StaticResource TxtBoxBase}">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    <GroupBox Header="Buttons" FontSize="18">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <Button Content="Button 1"
+                        Style="{StaticResource BtnBlack}"/>
+                <Button Content="Button 2"
+                        Style="{StaticResource BtnBlack}"/>
+                <Button Content="Button 3"
+                        Style="{StaticResource BtnBlack}"
+                        Background="Maroon"/>
+                <Button Content="Button 4"
+                        Style="{StaticResource BtnBlack}"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Background" Value="DarkGreen"/>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox Grid.Row="0" Text="TextBox 1"
+                         Style="{StaticResource TxtBoxTitleStyle}"/>
+                <TextBox Grid.Row="1" Text="TextBox 2"/>
+                <TextBox Grid.Row="2" Text="TextBox 3"
+                         FontSize="24"/>
+                <TextBox Grid.Row="3" Text="TextBox 4"/>
+            </Grid>
+            <StackPanel Grid.Row="2">
+                <Button Style="{StaticResource BtnGreatStyle}"
+                        Content="Great Button"/>
+            </StackPanel>
+        </Grid>
+    </GroupBox>-->
+
+    <!--<StackPanel>
+        <Button Content="Button 1"
+                Style="{StaticResource BtnBaseStyle}"/>
+        <Button Content="Button 2"
+                Style="{DynamicResource BtnBaseStyle}"/>
+        <Button Content="Button 3"
+                Style="{DynamicResource BtnBaseStyle2}"/>
+        <Button Content="Button 4"
+                Style="{DynamicResource BtnBaseStyle}"/>
+    </StackPanel>-->
+
+    <StackPanel VerticalAlignment="Center">
+        <Button Name="btnSkin" Content="Switch Skin"
+                Click="BtnSkin_OnClick"
+                Style="{DynamicResource BtnBaseStyle3}"/>
+        <Button Name="BtnChild" Content="Open child window"
+                Click="BtnChild_OnClick"
+                Style="{DynamicResource BtnBaseStyle3}"/>
+    </StackPanel>
 </Window>

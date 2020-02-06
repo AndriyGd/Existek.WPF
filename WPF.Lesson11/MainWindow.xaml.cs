@@ -20,9 +20,35 @@ namespace WPF.Lesson11
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _isYellow = true;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnSkin_OnClick(object sender, RoutedEventArgs e)
+        {
+            var rd = new ResourceDictionary();
+            var uri = string.Empty;
+            if (_isYellow)
+            {
+                uri = "Skins/Green/GreenSkin.xaml";
+            }
+            else
+            {
+                uri = "Skins/Yellow/YellowSkin.xaml";
+            }
+
+            rd.MergedDictionaries.Add(App.LoadComponent(new Uri(uri, UriKind.Relative)) as ResourceDictionary);
+
+            _isYellow = !_isYellow;
+
+            Application.Current.Resources = rd;
+        }
+
+        private void BtnChild_OnClick(object sender, RoutedEventArgs e)
+        {
+            new Window1().Show();
         }
     }
 }
