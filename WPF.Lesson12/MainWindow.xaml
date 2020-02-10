@@ -6,7 +6,88 @@
         xmlns:local="clr-namespace:WPF.Lesson12"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="IncorrectPagesStyle" TargetType="TextBlock">
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Book.Pages}" Value="0">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <!--<TextBlock Text="WPF Lesson 12" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="25">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="Chocolate"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="FontSize">
+                                        <DoubleAnimation From="25" To="30" Duration="0:0:0.15"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="FontSize">
+                                        <DoubleAnimation From="30" To="25" Duration="0:0:0.15"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>-->
+        <!--<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <CheckBox Name="ChbIsDone" Content="Is Done"/>
+            <TextBox Margin="0 5 0 0">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ChbIsDone, Path=IsChecked}" Value="True">
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+        </StackPanel>-->
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" GridLinesVisibility="Vertical"
+                  ItemsSource="{Binding Books}" IsReadOnly="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--<DataGridCheckBoxColumn Binding="{Binding IsSelected}"/>-->
+                <DataGridTextColumn Header="Name" Binding="{Binding Book.Name}"/>
+                <DataGridTextColumn Header="Pages" Binding="{Binding Book.Pages}"
+                                    ElementStyle="{StaticResource IncorrectPagesStyle}"/>
+                <DataGridTextColumn Header="Author" Binding="{Binding Book.Author}"/>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                            <Setter Property="Background" Value="LimeGreen"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
     </Grid>
 </Window>
