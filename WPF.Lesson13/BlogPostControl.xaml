@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="WPF.Lesson13.BlogPostControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.Lesson13"
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="300" HorizontalAlignment="Stretch">
+    <Border BorderBrush="Black" BorderThickness="1" Margin="5" CornerRadius="10">
+        <Grid Margin="6 1 5 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="TxtbPostTitle" Foreground="Black" FontSize="22"
+                       TextTrimming="CharacterEllipsis"
+                       Text="Title"/>
+            <TextBlock x:Name="TxtbPostDescription" Grid.Row="1" FontSize="14" Foreground="Black"
+                       TextTrimming="WordEllipsis" TextWrapping="Wrap" 
+                       Text="Description"/>
+        </Grid>
+    </Border>
+</UserControl>

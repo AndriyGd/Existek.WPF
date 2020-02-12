@@ -7,6 +7,36 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding Posts}" HorizontalContentAlignment="Stretch" Margin="0,0,0.333,-0.333" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:BlogPostControl MaxWidth="400"
+                        PostTitle="{Binding Title}"
+                        PostDescription="{Binding Description}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DataGrid Grid.Row="1" 
+                  CanUserAddRows="False" 
+                  CanUserDeleteRows="False" 
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Posts}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Post">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <local:BlogPostControl MaxWidth="400"
+                                                   PostTitle="{Binding Title}"
+                                                   PostDescription="{Binding Description}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
