@@ -5,8 +5,164 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson14"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="900">
+    <Window.Resources>
+        <Style x:Key="ItemStyle" TargetType="ListBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid Margin="6 1 5 5" MaxWidth="500">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock FontSize="22" TextTrimming="CharacterEllipsis"
+                                       Text="{Binding Title}"/>
+                            <TextBlock Grid.Row="1" FontSize="14"
+                                       TextTrimming="WordEllipsis" TextWrapping="Wrap" 
+                                       Text="{Binding Description}"/>
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="5" Grid.IsSharedSizeScope="True">
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>-->
+        <!--<ListBox Style="{StaticResource ItemStyle}"
+                 ItemsSource="{Binding Posts}"/>-->
+
+        <!--<ScrollViewer>
+            <ItemsControl ItemsSource="{Binding Posts}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="6 1 5 5" MaxWidth="500">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock FontSize="22" TextTrimming="CharacterEllipsis"
+                                       Text="{Binding Title}"/>
+                            <TextBox Grid.Row="1" FontSize="14" TextWrapping="Wrap" 
+                                       Text="{Binding Description}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>-->
+
+        <!--<ItemsControl ItemsSource="{Binding Posts}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="6 1 5 5" MaxWidth="500">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="22" TextTrimming="CharacterEllipsis"
+                                   Text="{Binding Title}"/>
+                        <TextBox Grid.Row="1" FontSize="14" TextWrapping="Wrap" 
+                                 Text="{Binding Description}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>-->
+
+        <!--<ItemsControl ItemsSource="{Binding Posts}" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="6 1 5 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="TitleGr"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="22" TextTrimming="CharacterEllipsis"
+                                   Text="{Binding Title}"/>
+                        <TextBox Grid.Column="1" Margin="5 0 0 0" FontSize="14" TextWrapping="Wrap" 
+                                 Text="{Binding Description}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding NewPosts}" Margin="0 15 0 0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="6 1 5 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="TitleGr"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock FontSize="22" TextTrimming="CharacterEllipsis"
+                                   Text="{Binding Title}"/>
+                        <TextBox Grid.Column="1" Margin="5 0 0 0" FontSize="14" TextWrapping="Wrap" 
+                                 Text="{Binding Description}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>-->
+
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding NewPosts}">
+            <DataGrid.Columns>
+                <DataGridTextColumn MaxWidth="120"
+                                    Binding="{Binding Title}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.Header>
+                        <TextBox Text="Title of Post" FontSize="24" TextWrapping="Wrap"
+                                   IsReadOnly="True" BorderThickness="0"
+                                 Background="Transparent"
+                                   HorizontalContentAlignment="Center"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Description}">
+                    <DataGridTextColumn.Header>
+                        <TextBox Text="Description" FontSize="24"
+                                 IsReadOnly="True" BorderThickness="0"
+                                 Background="Transparent"
+                                 HorizontalContentAlignment="Center"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Visitors" FontSize="18"/>
+                        <DataGrid Grid.Row="1" CanUserDeleteRows="False" CanUserAddRows="False"
+                                  AutoGenerateColumns="False"
+                                  ItemsSource="{Binding Visitors}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
     </Grid>
 </Window>

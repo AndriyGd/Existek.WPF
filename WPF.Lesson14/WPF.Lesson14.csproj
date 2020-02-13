@@ -68,6 +68,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Post.cs" />
+    <Compile Include="Model\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
