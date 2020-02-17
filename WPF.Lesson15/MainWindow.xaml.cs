@@ -24,5 +24,10 @@ namespace WPF.Lesson15
         {
             InitializeComponent();
         }
+
+        private void Button2_OnClick(object sender, RoutedEventArgs e)
+        {
+            Button1.IsEnabled = !Button1.IsEnabled;
+        }
     }
 }

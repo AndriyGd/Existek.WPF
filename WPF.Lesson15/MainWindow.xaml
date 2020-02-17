@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Lesson15"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="250" Width="400">
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <Button Name="Button1" Content="&#xf015;" FontFamily="{StaticResource FontAwesome}"
+                Style="{StaticResource ButtonBaseStyle}" IsEnabled="False"/>
+        <Button Name="Button2" Content="&#xf125;" Margin="0 5 0 0"
+                Style="{StaticResource ButtonBaseStyle}" Width="120"
+                FontFamily="{StaticResource FontAwesome}"
+                Click="Button2_OnClick"/>
+    </StackPanel>
 </Window>
