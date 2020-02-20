@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BaseViewModel.cs" />
+    <Compile Include="Common\BasePropertyChangedNotifier.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Common\DelegateCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

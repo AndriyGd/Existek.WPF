@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace CommonMVVM.Common
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BasePropertyChangedNotifier : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

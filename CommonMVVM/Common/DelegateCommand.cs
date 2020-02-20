@@ -1,22 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace CommonMVVM.Common
 {
     public class DelegateCommand : ICommand
     {
+        private readonly Action<object> _action;
+        private readonly Predicate<object> _predicate;
+
+        public DelegateCommand(Action<object> action, Predicate<object> predicate)
+        {
+            _action = action;
+            _predicate = predicate;
+        }
+
+        public DelegateCommand(Action<object> action)
+        {
+            _action = action;
+            _predicate = p => true;
+        }
+
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return _predicate?.Invoke(parameter) ?? false;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            _action?.Invoke(parameter);
         }
 
         public event EventHandler CanExecuteChanged
