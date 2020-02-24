@@ -5,6 +5,8 @@ namespace CommonMVVM.Common
 {
     public class DelegateCommand : ICommand
     {
+        public event Action RequestCommand;
+
         private readonly Action<object> _action;
         private readonly Predicate<object> _predicate;
 
@@ -28,6 +30,7 @@ namespace CommonMVVM.Common
         public void Execute(object parameter)
         {
             _action?.Invoke(parameter);
+            RequestCommand?.Invoke();
         }
 
         public event EventHandler CanExecuteChanged

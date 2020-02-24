@@ -1,0 +1,40 @@
+﻿<Window x:Class="WPF.Lesson18.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Lesson18.Views"
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="MainWindowView" Height="450" Width="600">
+    <DockPanel>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open folder"
+                          Command="{Binding OpenFolderCommand}"/>
+                <Separator/>
+                <MenuItem Header="Close" Command="{Binding CloseCommand}"/>
+            </MenuItem>
+        </Menu>
+        <Button Content="&#xf177;" DockPanel.Dock="Left" FontSize="34" Foreground="LimeGreen"
+                FontFamily="{StaticResource FontAwesome}" Padding="2 0 5 0"
+                Command="{Binding PrevImageCommand}"/>
+        <Button Content="&#xf178;" DockPanel.Dock="Right" FontSize="34" Foreground="LimeGreen"
+                FontFamily="{StaticResource FontAwesome}" Padding="5 0 2 0"
+                Command="{Binding NextImageCommand}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="{Binding CurrentImageItem.ImageFile.FullName}"/>
+
+            <StackPanel Grid.Row="1" Margin="0 5 0 5" Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="File Name:"/>
+                <TextBlock Margin="5 0 0 0" Text="{Binding CurrentImageItem.ImageFile.Name}"
+                           FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>

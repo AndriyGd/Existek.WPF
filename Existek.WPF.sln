@@ -41,6 +41,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonMVVM", "CommonMVVM\CommonMVVM.csproj", "{60BC3A1B-5170-4AF0-8A7E-49B5D4ACCF63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Lesson18", "WPF.Lesson18\WPF.Lesson18.csproj", "{FD607DAD-C18E-4712-A35B-71FF209565A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{60BC3A1B-5170-4AF0-8A7E-49B5D4ACCF63} = {60BC3A1B-5170-4AF0-8A7E-49B5D4ACCF63}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
