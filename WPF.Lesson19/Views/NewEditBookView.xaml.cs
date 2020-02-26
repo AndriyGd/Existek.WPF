@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WPF.Lesson19
+namespace WPF.Lesson19.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NewEditBookView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewEditBookView : Window
     {
-        public MainWindow()
+        public NewEditBookView()
         {
             InitializeComponent();
         }
