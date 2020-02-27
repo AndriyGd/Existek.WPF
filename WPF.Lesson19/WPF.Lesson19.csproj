@@ -49,6 +49,9 @@
     <Reference Include="ModelDomain">
       <HintPath>..\ModelDomain\bin\Debug\ModelDomain.dll</HintPath>
     </Reference>
+    <Reference Include="MVVMCore">
+      <HintPath>..\..\..\..\..\WPF\MVVMCore\MVVMCore\bin\Debug\MVVMCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -75,6 +78,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\NewEditBookViewModel.cs" />
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>

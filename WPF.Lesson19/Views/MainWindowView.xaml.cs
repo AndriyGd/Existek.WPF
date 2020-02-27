@@ -1,6 +1,7 @@
 ﻿namespace WPF.Lesson19.Views
 {
     using ModelDomain.BooRepositories;
+    using ModelDomain.Models;
     using ViewModels;
 
     /// <summary>
@@ -12,7 +13,7 @@
         {
             InitializeComponent();
 
-            DataContext = new MainWindowViewModel(new BookRepository());
+            DataContext = new MainWindowViewModel(new BookRepository(typeof(XBook)));
         }
     }
 }

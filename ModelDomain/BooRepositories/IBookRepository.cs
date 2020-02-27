@@ -2,9 +2,14 @@
 
 namespace ModelDomain.BooRepositories
 {
+    using System;
+    using Models;
+
     public interface IBookRepository
     {
-        List<Book> GetBooks();
-        void AddBook(Book book);
+        Type BookType { get; }
+        List<IBook> GetBooks();
+        void AddBook(IBook book);
+        bool UpdateBook(IBook book);
     }
 }

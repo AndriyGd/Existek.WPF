@@ -1,27 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using ModelDomain.Models;
 
 namespace WPF.Lesson19.Views
 {
+    using ViewModels;
+
     /// <summary>
     /// Interaction logic for NewEditBookView.xaml
     /// </summary>
-    public partial class NewEditBookView : Window
+    public partial class NewEditBookView
     {
-        public NewEditBookView()
+        public NewEditBookView(IBook book)
         {
             InitializeComponent();
+
+            var viewModel = new NewEditBookViewModel(book);
+
+            viewModel.CancelCommand.RequestCommand += Close;
+            viewModel.CloseCommand.RequestCommand += CloseCommandOnRequestCommand;
+
+            DataContext = viewModel;
+        }
+
+        private void CloseCommandOnRequestCommand()
+        {
+            DialogResult = true;
+            Close();
         }
     }
 }

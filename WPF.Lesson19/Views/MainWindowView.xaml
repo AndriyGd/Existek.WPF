@@ -14,11 +14,13 @@
 
         <ToolBarTray>
             <ToolBar>
-                <Button Content="New Book"/>
+                <Button Content="New Book" Command="{Binding NewBookCommand}"/>
+                <Button Content="Edit Book" Command="{Binding EditBookCommand}"/>
             </ToolBar>
         </ToolBarTray>
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Books}"
+                  SelectedItem="{Binding SelectedBook, UpdateSourceTrigger=PropertyChanged}"
                   AutoGenerateColumns="False" AlternatingRowBackground="AliceBlue"
                   CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True">
             <DataGrid.Columns>
