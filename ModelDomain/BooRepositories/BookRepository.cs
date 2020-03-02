@@ -5,6 +5,7 @@ using MVVMCore.Helpers;
 
 namespace ModelDomain.BooRepositories
 {
+    using System.Data.Entity;
     using Models;
 
     public class BookRepository : IBookRepository
@@ -47,8 +48,7 @@ namespace ModelDomain.BooRepositories
 
         public bool UpdateBook(IBook book)
         {
-            var dbBook = Db.Books.FirstOrDefault(b => b.BookId == book.BookId);
-
+            var dbBook = GetDbBook(book);
             if (dbBook == null) return false;
 
             CopyValueHelper.CopyValuesOfDifferentEntity(book, dbBook);
@@ -56,6 +56,41 @@ namespace ModelDomain.BooRepositories
             Db.SaveChanges();
 
             return true;
+        }
+
+        public bool RemoveBook(IBook book)
+        {
+            var dbBook = GetDbBook(book);
+            if (dbBook == null) return false;
+
+            Db.Books.Remove(dbBook);
+            Db.SaveChanges();
+
+            return true;
+        }
+
+        public List<IBook> ReloadBooks(List<IBook> books)
+        {
+            var reloadedBooks = new List<IBook>();
+            foreach (var book in books)
+            {
+                var dbBook = GetDbBook(book);
+
+                Db.Entry(dbBook).State = EntityState.Unchanged;
+                Db.Entry(dbBook).Reload();
+
+                CopyValueHelper.CopyValuesOfDifferentEntity(dbBook, book);
+
+                reloadedBooks.Add(book);
+            }
+
+            return reloadedBooks;
+        }
+
+        private Book GetDbBook(IBook book)
+        {
+            var dbBook = Db.Books.FirstOrDefault(b => b.BookId == book.BookId);
+            return dbBook;
         }
     }
 }

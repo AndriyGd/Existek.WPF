@@ -24,13 +24,15 @@ namespace WPF.Lesson19.ViewModels
         private bool _isDataLoaded;
         private IBook _selectedBook;
 
+        #region Class Properties
+
         public ObservableCollection<IBook> Books { get; set; }
-        public IBook SelectedBook   
+        public IBook SelectedBook
         {
             get => _selectedBook;
             set
             {
-                if(!SetValue(ref _selectedBook, value)) return;
+                if (!SetValue(ref _selectedBook, value)) return;
 
                 _selectedBook = value;
                 OnPropertyChanged();
@@ -39,6 +41,9 @@ namespace WPF.Lesson19.ViewModels
 
         public DelegateCommand NewBookCommand { get; set; }
         public DelegateCommand EditBookCommand { get; set; }
+        public DelegateCommand RemoveBookCommand { get; set; }
+        public DelegateCommand ReloadBooksCommand { get; set; }
+        #endregion
 
         #region Class Constructors
 
@@ -50,10 +55,11 @@ namespace WPF.Lesson19.ViewModels
 
             NewBookCommand = new DelegateCommand(OnNewBook, p => _isDataLoaded);
             EditBookCommand = new DelegateCommand(OnEditBook,p => SelectedBook != null);
+            RemoveBookCommand = new DelegateCommand(OnRemoveBook, p => SelectedBook != null);
+            ReloadBooksCommand = new DelegateCommand(OnReloadBooks, p => _isDataLoaded);
 
             LoadDataAsync();
         }
-
 
         #endregion
 
@@ -118,6 +124,55 @@ namespace WPF.Lesson19.ViewModels
                         MessageBox.Show("Book was updated unsuccessfully!");
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void OnRemoveBook(object param)
+        {
+            try
+            {
+                if (MessageBox.Show("Are you sure you want to remove the Book?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) !=
+                    MessageBoxResult.Yes) return;
+
+                if (!_bookRepository.RemoveBook(SelectedBook))
+                {
+                    MessageBox.Show("Book was not deleted successfully!\nPlease try again.");
+                    return;
+                }
+
+                Books.Remove(SelectedBook);
+                SelectedBook = Books.FirstOrDefault();
+
+                MessageBox.Show("Book was deleted successfully.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private async void OnReloadBooks(object obj)
+        {
+            try
+            {
+                _isDataLoaded = false;
+                Books.Clear();
+
+                var reloadedBooks = new List<IBook>();
+                await Task.Run(() =>
+                {
+                    var books = _bookRepository.GetBooks();
+                    reloadedBooks = _bookRepository.ReloadBooks(books);
+                });
+
+                reloadedBooks.ForEach(Books.Add);
+
+                _isDataLoaded = true;
+                SelectedBook = Books.FirstOrDefault();
             }
             catch (Exception e)
             {

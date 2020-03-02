@@ -13,5 +13,11 @@ namespace WPF.Lesson19
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var culture = $"uk-UA";
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
+        }
     }
 }

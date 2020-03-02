@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:WPF.Lesson19.Properties"
         xmlns:local="clr-namespace:WPF.Lesson19.Views"
         mc:Ignorable="d"
-        Title="Library" Height="450" Width="800">
+        Title="{x:Static resx:Resources.MainTitle}" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,10 +15,19 @@
 
         <ToolBarTray>
             <ToolBar>
-                <Button Command="{Binding NewBookCommand}">
+                <Button ToolTip="New Book" Command="{Binding NewBookCommand}">
                     <Image Source="../Resources/view_new.png"/>
                 </Button>
-                <Button Content="Edit Book" Command="{Binding EditBookCommand}"/>
+                <Button ToolTip="Edit Book" Command="{Binding EditBookCommand}">
+                    <Image Source="../Resources/view_edit.png"/>
+                </Button>
+                <Button ToolTip="Reload Books" Command="{Binding ReloadBooksCommand}">
+                    <Image Source="../Resources/arrow_refresh.png"/>
+                </Button>
+                <Separator/>
+                <Button ToolTip="Remove Books" Command="{Binding RemoveBookCommand}">
+                    <Image Source="../Resources/cross.png"/>
+                </Button>
             </ToolBar>
         </ToolBarTray>
 

@@ -11,5 +11,7 @@ namespace ModelDomain.BooRepositories
         List<IBook> GetBooks();
         void AddBook(IBook book);
         bool UpdateBook(IBook book);
+        bool RemoveBook(IBook book);
+        List<IBook> ReloadBooks(List<IBook> books);
     }
 }
