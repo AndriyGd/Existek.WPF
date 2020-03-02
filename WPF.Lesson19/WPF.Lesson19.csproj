@@ -123,6 +123,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\arrow_refresh.png" />
+    <Resource Include="Resources\cross.png" />
+    <Resource Include="Resources\view_edit.png" />
+    <Resource Include="Resources\view_new.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

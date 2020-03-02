@@ -14,7 +14,9 @@
 
         <ToolBarTray>
             <ToolBar>
-                <Button Content="New Book" Command="{Binding NewBookCommand}"/>
+                <Button Command="{Binding NewBookCommand}">
+                    <Image Source="../Resources/view_new.png"/>
+                </Button>
                 <Button Content="Edit Book" Command="{Binding EditBookCommand}"/>
             </ToolBar>
         </ToolBarTray>
